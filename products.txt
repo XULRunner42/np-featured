@@ -1,0 +1,4 @@
+url	title	img
+/product/1	Steaming Pile #1	http://example.us/pile-shit.jpg
+/product/2	Steaming Pile #2	http://example.us/pile-shit.jpg
+/product/3	Steaming Pile #3	http://example.us/pile-shit.jpg
