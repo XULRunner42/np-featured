@@ -2,23 +2,30 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
   <title>Featured Products</title>
-  {{!<link href="css/main.css" rel="stylesheet" type="text/css" media="all"/>
-  <script type="text/javascript" src="javascript/main.js"></script>}}
+  <link href="/css/main.css" rel="stylesheet" type="text/css" media="all"/>
+  {{!<script type="text/javascript" src="javascript/main.js"></script>}}
 </head>
 
 <body>
 
+<div class="productlist">
 {{#products}}
-<div id="productlist">
- <strong><a href="{{url}}">{{title}}</a></strong><br/>
- <img src="{{img}}" alt="{{title}}/>
-</div>
+  <div class="product">
+   <strong><a href="{{url}}">{{title}}</a></strong><br/>
+   <img src="{{img}}" alt="{{title}}"/>
+  </div>
 {{/products}}
-
-{{#pages}}
-<div id="pageindex">
- <a href="/page/{{page}}">{{page}}</a>
 </div>
+<br/>
+<div class="pageindex">
+
+<div class="pageindex">
+{{#pages}}
+  <span class="pagelink">
+   <a href="/page/{{page}}">{{page}}</a>
+  </span>
 {{/pages}}
+</span>
+</div>
 
 </body> </html>
