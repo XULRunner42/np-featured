@@ -8,6 +8,7 @@
 
 <body>
 
+<div id="content">
 <div class="productlist">
 {{#products}}
   <div class="product">
@@ -15,9 +16,8 @@
    <img src="{{img}}" alt="{{title}}"/>
   </div>
 {{/products}}
+<br style="clear: both"/>
 </div>
-<br/>
-<div class="pageindex">
 
 <div class="pageindex">
 {{#pages}}
@@ -25,7 +25,7 @@
    <a href="/page/{{page}}">{{page}}</a>
   </span>
 {{/pages}}
-</span>
+</div>
 </div>
 
 </body> </html>
