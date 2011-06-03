@@ -33,6 +33,8 @@ func getPages() (ret []map[string]string) {
 	{ "page": "2" },
 	{ "page": "3" },
 	{ "page": "4" },
+	{ "page": "5" },
+	{ "page": "6" },
     }
 
     return ret
