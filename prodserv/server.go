@@ -15,6 +15,10 @@ func getProducts() (ret []map[string]string) {
 	"title":"Steaming Pile #2",
 	"img":	"http://example.us/pile-shit.jpg",
     }, {
+	"url": "/product/4",
+	"title":"Lookin' Good Template",
+	"img":	"http://nerdland.info/template.png",
+    }, {
 	"url": "/product/3",
 	"title":"Steaming Pile #3",
 	"img":	"http://example.us/pile-shit.jpg",
