@@ -3,9 +3,11 @@ package main
 import (
     "github.com/hoisie/web.go"
     "github.com/hoisie/mustache.go"
+    "trans"
 )
 
 func getProducts() (ret []map[string]string) {
+    /*
     ret = []map[string]string{ {
 	"url":	"/product/1",
 	"title":"Steaming Pile #1",
@@ -24,8 +26,9 @@ func getProducts() (ret []map[string]string) {
 	"img":	"http://example.us/pile-shit.jpg",
 	},
     }
+    */
 
-    return ret
+    return trans.NpToAmazon()
 }
 
 func getPages() (ret []map[string]string) {

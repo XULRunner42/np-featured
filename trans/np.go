@@ -3,7 +3,7 @@ package trans
 import (
     dbi "github.com/thomaslee/go-dbi"
     _ "github.com/thomaslee/go-dbd-sqlite"
-    vector "container/vector"
+//    vector "container/vector"
     "fmt"
 )
 
@@ -24,11 +24,11 @@ func (listing *BasicListing) String() string {
     return s
 }
 
-func NpToAmazon () {
+func NpToAmazon () ([]map[string]string) {
     npconn, err := dbi.Connect("sqlite://./np.sqlite")
     if err != nil {
 	fmt.Printf("error: connecting to np.sqlite: %s\n", err.String())
-	return
+	return nil
     }
     defer npconn.Close()
 
@@ -36,7 +36,7 @@ func NpToAmazon () {
     if err != nil {
 	fmt.Printf("error: connecting to products.sqlite: %s\n",
 	    err.String())
-	return
+	return nil
     }
     defer amaconn.Close()
 
@@ -44,11 +44,12 @@ func NpToAmazon () {
 	cost FROM items`)
     if err != nil {
 	fmt.Printf("error: reading from np.sqlite: %s\n", err.String())
-	return
+	return nil
     }
     defer rs.Close()
 
-    vec := new(vector.Vector)
+    ret := []map[string]string {}
+    var cur []map[string]string
     for rs.Next() {
 	var product_name string
 	var model_number string
@@ -60,15 +61,32 @@ func NpToAmazon () {
 	    fmt.Printf("error: %s\n", err.String())
 	}
 
-	item := &BasicListing{ ProductName: product_name, ModelNumber:
+	cur = []map[string]string{ {
+	    "product_name": product_name,
+	    "model_number": model_number,
+	    "list":	    list,
+	    "cost":	    cost,
+	} }
+
+	newslice := make([]map[string]string, len(ret) + len(cur))
+	copy(newslice, ret)
+	copy(newslice[len(ret):], cur)
+	ret = newslice
+
+	/*item := &BasicListing{ ProductName: product_name, ModelNumber:
 	    model_number, List: list, Cost: cost}
 
-	vec.Push(item)
+	vec.Push(item)*/
 
     }
 
+//    fmt.Print(ret)
+    return ret
+
+/*
     for i := 0; i < vec.Len(); i++ {
 	el := vec.At(i);
 	fmt.Print(el,"\n");
     }
+    */
 }
